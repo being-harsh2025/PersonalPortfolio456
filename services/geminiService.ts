@@ -3,7 +3,10 @@ import { GoogleGenAI } from "@google/genai";
 import { USER_DATA } from "../constants";
 
 // Correct initialization using named parameter and process.env.API_KEY
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({
+  apiKey: import.meta.env.VITE_GEMINI_API_KEY,
+});
+
 
 export const getPortfolioAssistantResponse = async (userMessage: string, history: { role: 'user' | 'assistant', content: string }[]) => {
   try {
